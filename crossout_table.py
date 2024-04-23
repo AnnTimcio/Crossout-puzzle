@@ -5,6 +5,30 @@ class CrossoutTable:
                   list('                    '),
                   list('                    '), list('                    '), list('                    ')]
 
+
+    def add(self, x, y, word, dir):
+        if dir == 'nw':
+            self.add_nw(x, y, word)
+
+        elif dir == 'e':
+            self.add_e(x, y, word)
+
+        elif dir == 'n':
+            self.add_n(x, y, word)
+
+        elif dir == 'ne':
+            self.add_ne(x, y, word)
+
+        elif dir == 'se':
+            self.add_se(x, y, word)
+
+        elif dir == 's':
+            self.add_s(x, y, word)
+
+        elif dir == 'w':
+            self.add_w(x, y, word)
+
+
     def add_e(self, x, y, word):
         z = 0
         for c in word:
