@@ -1,15 +1,73 @@
 class CrossoutTable:
     def __init__(self):
-        self.t = [list('                    '),list('                    '),list('                    '),
-                  list('                    '),list('                    '),list('                    '),
+        self.t = [list('                    '), list('                    '), list('                    '),
+                  list('                    '), list('                    '), list('                    '),
                   list('                    '),
-                  list('                    '),list('                    '),list('                    ')]
+                  list('                    '), list('                    '), list('                    ')]
 
-    def add(self, x, y, word):
-        z=0
+    def add_e(self, x, y, word):
+        z = 0
         for c in word:
-            self.t[y][x+z] = c
-            z+=1
+            if x + z < 20:
+                self.t[y][x + z] = c
+            z += 1
+
+    def add_n(self, x, y, word):
+        z = 0
+        for c in word:
+            if x + z >= 0:
+                self.t[y + z][x] = c
+            z -= 1
+
+    def add_ne(self, x, y, word):
+        z = 0
+        a = 0
+        for c in word:
+            if x + z < 20 and y + a >= 0:
+                self.t[y + a][x + z] = c
+            a -= 1
+            z += 1
+
+    def add_se(self, x, y, word):
+        z = 0
+        a = 0
+        for c in word:
+            if x + z < 20 and y + a < 10:
+                self.t[y + a][x + z] = c
+            z += 1
+            a += 1
+
+    def add_s(self, x, y, word):
+        z = 0
+        for c in word:
+            if x + z < 20:
+                self.t[y + z][x] = c
+            z += 1
+
+    def add_sw(self, x, y, word):
+        z = 0
+        a = 0
+        for c in word:
+            if x + z >= 0 and y + a < 10:
+                self.t[y + a][x + z] = c
+            z -= 1
+            a += 1
+
+    def add_w(self, x, y, word):
+        z = 0
+        for c in word:
+            if x + z >= 0:
+                self.t[y][x + z] = c
+            z -= 1
+
+    def add_nw(self, x, y, word):
+        z = 0
+        a = 0
+        for c in word:
+            if x + z >= 0 and a + y >= 0:
+                self.t[y + a][x + z] = c
+            z -= 1
+            a -= 1
 
     def to_string(self):
         return ("**********************\n"
