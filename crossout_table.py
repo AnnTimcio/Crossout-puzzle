@@ -28,6 +28,9 @@ class CrossoutTable:
         elif dir == 'w':
             self.add_w(x, y, word)
 
+        elif dir == 'sw':
+            self.add_sw(x, y, word)
+
 
     def add_e(self, x, y, word):
         z = 0

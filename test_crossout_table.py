@@ -206,3 +206,22 @@ class TestCrossoutTable(TestCase):
 * 9                  *
 * 0                  *
 **********************""", ct.to_string())
+
+    def test_to_string_3_word(self):
+        ct = CrossoutTable()
+        ct.add(9, 5, "kot", 'nw')
+        ct.add(6, 4, "piesek", 'sw')
+        ct.add(7, 3, "tamburyno", 'e')
+        self.assertEqual("""\
+**********************
+*                    *
+*                    *
+*                    *
+*       tamburyno    *
+*      p o           *
+*     i   k          *
+*    e               *
+*   s                *
+*  e                 *
+* k                  *
+**********************""", ct.to_string())
