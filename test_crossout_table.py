@@ -225,3 +225,14 @@ class TestCrossoutTable(TestCase):
 *  e                 *
 * k                  *
 **********************""", ct.to_string())
+
+    def test_to_string_changed_size(self):
+        ct = CrossoutTable(3, 3)
+        ct.add(2, 2, "kot", 'nw')
+        ct.add(0, 0, "tamburyno", 'e')
+        self.assertEqual("""\
+*****
+*tam*
+* o *
+*  k*
+*****""", ct.to_string())

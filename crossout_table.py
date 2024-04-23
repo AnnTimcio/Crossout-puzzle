@@ -1,10 +1,19 @@
 class CrossoutTable:
     def __init__(self):
+        self.W = 20
+        self.H = 10
         self.t = [list('                    '), list('                    '), list('                    '),
                   list('                    '), list('                    '), list('                    '),
                   list('                    '),
                   list('                    '), list('                    '), list('                    ')]
 
+    def __init__(self, width, height):
+        self.W = width
+        self.H = height
+        self.t = [list('                    '), list('                    '), list('                    '),
+                  list('                    '), list('                    '), list('                    '),
+                  list('                    '),
+                  list('                    '), list('                    '), list('                    ')]
 
     def add(self, x, y, word, dir):
         if dir == 'nw':
@@ -31,11 +40,10 @@ class CrossoutTable:
         elif dir == 'sw':
             self.add_sw(x, y, word)
 
-
     def add_e(self, x, y, word):
         z = 0
         for c in word:
-            if x + z < 20:
+            if x + z < self.W:
                 self.t[y][x + z] = c
             z += 1
 
@@ -50,7 +58,7 @@ class CrossoutTable:
         z = 0
         a = 0
         for c in word:
-            if x + z < 20 and y + a >= 0:
+            if x + z < self.W and y + a >= 0:
                 self.t[y + a][x + z] = c
             a -= 1
             z += 1
@@ -59,7 +67,7 @@ class CrossoutTable:
         z = 0
         a = 0
         for c in word:
-            if x + z < 20 and y + a < 10:
+            if x + z < self.W and y + a < self.H:
                 self.t[y + a][x + z] = c
             z += 1
             a += 1
@@ -67,7 +75,7 @@ class CrossoutTable:
     def add_s(self, x, y, word):
         z = 0
         for c in word:
-            if x + z < 20:
+            if x + z < self.H:
                 self.t[y + z][x] = c
             z += 1
 
@@ -75,7 +83,7 @@ class CrossoutTable:
         z = 0
         a = 0
         for c in word:
-            if x + z >= 0 and y + a < 10:
+            if x + z >= 0 and y + a < self.H:
                 self.t[y + a][x + z] = c
             z -= 1
             a += 1
@@ -97,15 +105,9 @@ class CrossoutTable:
             a -= 1
 
     def to_string(self):
+        o = 0
         return ("**********************\n"
-                f"*{''.join(self.t[0])}*\n"
-                f"*{''.join(self.t[1])}*\n"
-                f"*{''.join(self.t[2])}*\n"
-                f"*{''.join(self.t[3])}*\n"
-                f"*{''.join(self.t[4])}*\n"
-                f"*{''.join(self.t[5])}*\n"
-                f"*{''.join(self.t[6])}*\n"
-                f"*{''.join(self.t[7])}*\n"
-                f"*{''.join(self.t[8])}*\n"
-                f"*{''.join(self.t[9])}*\n"
-                "**********************")
+        while o <= self.H:
+            f"*{''.join(self.t[o])}*\n"
+            o += 1
+        "**********************")
