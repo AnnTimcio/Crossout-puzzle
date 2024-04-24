@@ -10,10 +10,9 @@ class CrossoutTable:
     def __init__(self, width, height):
         self.W = width
         self.H = height
-        self.t = [list('                    '), list('                    '), list('                    '),
-                  list('                    '), list('                    '), list('                    '),
-                  list('                    '),
-                  list('                    '), list('                    '), list('                    ')]
+        self.t = []
+        list[(''*self.W)*self.H]
+        self.t.append(list)
 
     def add(self, x, y, word, dir):
         if dir == 'nw':
@@ -105,9 +104,13 @@ class CrossoutTable:
             a -= 1
 
     def to_string(self):
-        o = 0
-        return ("**********************\n"
-        while o <= self.H:
-            f"*{''.join(self.t[o])}*\n"
-            o += 1
-        "**********************")
+        table = '**'
+        for n in range(self.W):
+            table += "*"
+        table += "\n"
+        for i in range(self.H):
+            table += f"*{''.join(self.t[i])}*\n"
+        for n in range(self.W):
+            table += "*"
+        table += "**"
+        return table
