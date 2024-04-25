@@ -11,8 +11,9 @@ class CrossoutTable:
         self.W = width
         self.H = height
         self.t = []
-        list[(''*self.W)*self.H]
-        self.t.append(list)
+        for _ in range(self.H):
+            row = [' '] * self.W
+            self.t.append(row)
 
     def add(self, x, y, word, dir):
         if dir == 'nw':
