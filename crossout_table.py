@@ -1,13 +1,5 @@
 class CrossoutTable:
-    def __init__(self):
-        self.W = 20
-        self.H = 10
-        self.t = [list('                    '), list('                    '), list('                    '),
-                  list('                    '), list('                    '), list('                    '),
-                  list('                    '),
-                  list('                    '), list('                    '), list('                    ')]
-
-    def __init__(self, width, height):
+    def __init__(self, width=20, height=10):
         self.W = width
         self.H = height
         self.t = []
@@ -75,7 +67,7 @@ class CrossoutTable:
     def add_s(self, x, y, word):
         z = 0
         for c in word:
-            if x + z < self.H:
+            if x + z <= self.H:
                 self.t[y + z][x] = c
             z += 1
 
