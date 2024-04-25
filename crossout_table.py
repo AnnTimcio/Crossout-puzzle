@@ -107,3 +107,9 @@ class CrossoutTable:
             table += "*"
         table += "**"
         return table
+
+    def is_full(self):
+        return False
+
+    def fill_with_random(self):
+        pass

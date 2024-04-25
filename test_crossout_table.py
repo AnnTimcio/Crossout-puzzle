@@ -236,3 +236,33 @@ class TestCrossoutTable(TestCase):
 * o *
 *  k*
 *****""", ct.to_string())
+
+    def test_full(self):
+        ct = CrossoutTable(3, 3)
+        ct.add(0, 0, "kot", 's')
+        ct.add(1, 0, "tok", 's')
+        ct.add(2, 0, "kto", 's')
+        self.assertEqual("""\
+*****
+*ktk*
+*oot*
+*tko*
+*****""", ct.to_string())
+
+    def test_is_full(self):
+        ct = CrossoutTable(3, 3)
+        ct.add(0, 0, "kot", 's')
+        ct.add(1, 0, "tok", 's')
+        ct.add(2, 0, "kto", 's')
+        self.assertTrue(ct.is_full())        
+
+    def test_is_not_full(self):
+        ct = CrossoutTable(3, 3)
+        ct.add(0, 0, "kot", 's')
+        ct.add(2, 0, "kto", 's')
+        self.assertFalse(ct.is_full())
+
+    def test_fill_with_random(self):
+        ct = CrossoutTable(3, 3)
+        ct.fill_with_random()
+        self.assertTrue(ct.is_full())        
