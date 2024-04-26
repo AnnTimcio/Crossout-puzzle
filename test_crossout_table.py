@@ -280,3 +280,14 @@ class TestCrossoutTable(TestCase):
         ct.fill_with_random()
         self.assertTrue(ct.is_full())
         print(ct.to_string())
+
+    def test_count_letters(self):
+        ct = CrossoutTable()
+        ct.add(0, 0, 'keyboard', 'e')
+        self.assertEqual(8, ct.count_letters())
+
+    def test_count_letters_2(self):
+        ct = CrossoutTable()
+        ct.add(0, 0, 'keyboard', 'e')
+        ct.add(1, 0, 'eye', 's')
+        self.assertEqual(10, ct.count_letters())

@@ -133,9 +133,15 @@ class CrossoutTable:
         return True
 
     def fill_with_random(self):
-        string.ascii_letters
         for r in self.t:
             if any(element == ' ' for element in r):
                 for x in range(0, self.W):
                     if r[x] == ' ':
                         r[x] = random.choice(string.ascii_letters.lower())
+
+    def count_letters(self):
+        l = 0
+        for c in self.t:
+            if c != ' ':
+                l += 1
+        return l
