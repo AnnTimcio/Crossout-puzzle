@@ -41,4 +41,11 @@ class Engine:
             if len(word) > y + 1:
                 logging.debug('no room top')
                 return False
+
+        if direction == 'e':
+            return self.table.can_add_e(x, y, word)
+
+        if direction == 's':
+            return self.table.can_add_s(x, y, word)
+
         return True

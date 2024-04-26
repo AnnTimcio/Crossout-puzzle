@@ -53,6 +53,16 @@ class TestEngine(TestCase):
         eng = Engine()
         self.assertFalse(eng._can_add(17, 5, 'kwiaty', 'se'))
 
+    def test_can_add_crossing_1(self):
+        eng = Engine()
+        eng.table.add(0, 0, 'window', 'e')
+        self.assertTrue(eng._can_add(0, 0, 'wind', 's'))
+
+    def test_can_add_crossing_2(self):
+        eng = Engine()
+        eng.table.add(0, 0, 'window', 'e')
+        self.assertFalse(eng._can_add(0, 0, 'red', 's'))
+
     def test_add_possible(self):
         eng = Engine()
         self.assertTrue(eng.add('noga'))

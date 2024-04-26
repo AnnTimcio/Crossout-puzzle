@@ -56,6 +56,15 @@ class CrossoutTable:
                 self.t[y][x + z] = c
             z += 1
 
+    def can_add_e(self, x, y, word):
+        z = 0
+        for c in word:
+            if x + z < self.W:
+                if self.t[y][x + z] != ' ' and self.t[y][x + z] != c:
+                    return False
+            z += 1
+        return True
+
     def add_n(self, x, y, word):
         z = 0
         for c in word:
@@ -87,6 +96,15 @@ class CrossoutTable:
             if y + z <= self.H:
                 self.t[y + z][x] = c
             z += 1
+
+    def can_add_s(self, x, y, word):
+        z = 0
+        for c in word:
+            if y + z <= self.H:
+                if self.t[y + z][x] != ' ' and self.t[y + z][x] != c:
+                    return False
+            z += 1
+        return True
 
     def add_sw(self, x, y, word):
         z = 0
