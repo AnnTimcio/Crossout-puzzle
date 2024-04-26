@@ -186,7 +186,6 @@ class TestCrossoutTable(TestCase):
 *                    *
 **********************""", ct.to_string())
 
-
     def test_to_string_1_word_add1(self):
         ct = CrossoutTable()
         ct.add(9, 5, "kot", 'nw')
@@ -268,7 +267,7 @@ class TestCrossoutTable(TestCase):
         ct.add(0, 0, "kot", 's')
         ct.add(1, 0, "tok", 's')
         ct.add(2, 0, "kto", 's')
-        self.assertTrue(ct.is_full())        
+        self.assertTrue(ct.is_full())
 
     def test_is_not_full(self):
         ct = CrossoutTable(3, 3)
@@ -279,4 +278,4 @@ class TestCrossoutTable(TestCase):
     def test_fill_with_random(self):
         ct = CrossoutTable(3, 3)
         ct.fill_with_random()
-        self.assertTrue(ct.is_full())        
+        self.assertTrue(ct.is_full())

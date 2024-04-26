@@ -81,7 +81,7 @@ class CrossoutTable:
     def add_s(self, x, y, word):
         z = 0
         for c in word:
-            if x + z <= self.H:
+            if y + z <= self.H:
                 self.t[y + z][x] = c
             z += 1
 
@@ -123,7 +123,11 @@ class CrossoutTable:
         return table
 
     def is_full(self):
-        return False
+        for r in self.t:
+            if any(element == ' ' for element in r):
+                return False
+
+        return True
 
     def fill_with_random(self):
         pass
