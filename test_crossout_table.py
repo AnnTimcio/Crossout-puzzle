@@ -279,3 +279,4 @@ class TestCrossoutTable(TestCase):
         ct = CrossoutTable(3, 3)
         ct.fill_with_random()
         self.assertTrue(ct.is_full())
+        print(ct.to_string())

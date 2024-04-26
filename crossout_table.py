@@ -11,6 +11,9 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
 #  limitations under the License.
+import random
+import string
+
 
 class CrossoutTable:
     def __init__(self, width=20, height=10):
@@ -130,4 +133,9 @@ class CrossoutTable:
         return True
 
     def fill_with_random(self):
-        pass
+        string.ascii_letters
+        for r in self.t:
+            if any(element == ' ' for element in r):
+                for x in range(0, self.W):
+                    if r[x] == ' ':
+                        r[x] = random.choice(string.ascii_letters.lower())
