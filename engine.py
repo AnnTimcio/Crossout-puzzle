@@ -48,4 +48,22 @@ class Engine:
         if direction == 's':
             return self.table.can_add_s(x, y, word)
 
+        if direction == 'w':
+            return self.table.can_add_w(x, y, word)
+
+        if direction == 'n':
+            return self.table.can_add_n(x, y, word)
+
+        if direction == 'sw':
+            return self.table.can_add_sw(x, y, word)
+
+        if direction == 'se':
+            return self.table.can_add_se(x, y, word)
+
+        if direction == 'ne':
+            return self.table.can_add_ne(x, y, word)
+
+        if direction == 'nw':
+            return self.table.can_add_nw(x, y, word)
+
         return True

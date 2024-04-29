@@ -72,6 +72,14 @@ class CrossoutTable:
                 self.t[y + z][x] = c
             z -= 1
 
+    def can_add_n(self, x, y, word):
+        z = 0
+        for c in word:
+            if x + z >= 0:
+                if self.t[y + z][x] != ' ' and self.t[y + z][x] != c:
+                    return False
+            z -= 1
+
     def add_ne(self, x, y, word):
         z = 0
         a = 0
@@ -81,12 +89,32 @@ class CrossoutTable:
             a -= 1
             z += 1
 
+    def can_add_ne(self, x, y, word):
+        z = 0
+        a = 0
+        for c in word:
+            if x + z < self.W and y + a >= 0:
+                if self.t[y + a][x + z] != ' ' and self.t[y + a][x + z] != c:
+                    return False
+            a -= 1
+            z += 1
+
     def add_se(self, x, y, word):
         z = 0
         a = 0
         for c in word:
             if x + z < self.W and y + a < self.H:
                 self.t[y + a][x + z] = c
+            z += 1
+            a += 1
+
+    def can_add_se(self, x, y, word):
+        z = 0
+        a = 0
+        for c in word:
+            if x + z < self.W and y + a < self.H:
+                if self.t[y + a][x + z] != ' ' and self.t[y + a][x + z] != c:
+                    return False
             z += 1
             a += 1
 
@@ -115,11 +143,29 @@ class CrossoutTable:
             z -= 1
             a += 1
 
+    def can_add_sw(self, x, y, word):
+        z = 0
+        a = 0
+        for c in word:
+            if x + z >= 0 and y + a < self.H:
+                if self.t[y + a][x + z] != ' ' and self.t[y + a][x + z] != c:
+                    return False
+            z -= 1
+            a += 1
+
     def add_w(self, x, y, word):
         z = 0
         for c in word:
             if x + z >= 0:
                 self.t[y][x + z] = c
+            z -= 1
+
+    def can_add_w(self, x, y, word):
+        z = 0
+        for c in word:
+            if x + z >= 0:
+                if self.t[y][x + z] != ' ' and self.t[y][x + z] != c:
+                    return False
             z -= 1
 
     def add_nw(self, x, y, word):
@@ -128,6 +174,16 @@ class CrossoutTable:
         for c in word:
             if x + z >= 0 and a + y >= 0:
                 self.t[y + a][x + z] = c
+            z -= 1
+            a -= 1
+
+    def can_add_nw(self, x, y, word):
+        z = 0
+        a = 0
+        for c in word:
+            if x + z >= 0 and a + y >= 0:
+                if self.t[y + a][x + z] != ' ' and self.t[y + a][x + z] != c:
+                    return False
             z -= 1
             a -= 1
 
