@@ -12,6 +12,7 @@
 #   See the License for the specific language governing permissions and
 #  limitations under the License.
 import logging
+import random
 
 from crossout_table import CrossoutTable
 
@@ -22,7 +23,12 @@ class Engine:
         self.table = CrossoutTable()
 
     def add(self, word):
-        return False
+        pos_dir = ['n','w','e','s','nw','ne','se','sw']
+        x = random.randint(0, self.W)
+        y = random.randint(0, self.H)
+        dir = random.choice(pos_dir)
+        i = self._can_add(x, y, dir)
+        return i
 
     def _can_add(self, x, y, word, direction):
         if direction == 'nw' or direction == 'w' or direction == 'sw':
@@ -67,3 +73,10 @@ class Engine:
             return self.table.can_add_nw(x, y, word)
 
         return True
+
+    def count_letters(self):
+        l = 0
+        for c in self.t:
+            if c != ' ':
+                l += 1
+        return l

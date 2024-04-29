@@ -219,3 +219,5 @@ class CrossoutTable:
             if c != ' ':
                 l += 1
         return l
+
+
