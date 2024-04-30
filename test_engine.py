@@ -45,6 +45,10 @@ class TestEngine(TestCase):
         eng = Engine()
         self.assertTrue(eng._can_add(12, 3, 'matematyka', 'w'))
 
+    def test_can_add_mucha(self):
+        eng = Engine()
+        self.assertFalse(eng._can_add(0, 6, 'mucha', 'w'))
+
     def test_can_add_7(self):
         eng = Engine()
         self.assertTrue(eng._can_add(2, 8, 'winogrono', 'ne'))

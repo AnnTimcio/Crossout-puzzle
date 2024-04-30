@@ -68,14 +68,14 @@ class CrossoutTable:
     def add_n(self, x, y, word):
         z = 0
         for c in word:
-            if x + z >= 0:
+            if y + z >= 0:
                 self.t[y + z][x] = c
             z -= 1
 
     def can_add_n(self, x, y, word):
         z = 0
         for c in word:
-            if x + z >= 0:
+            if y + z >= 0:
                 if self.t[y + z][x] != ' ' and self.t[y + z][x] != c:
                     return False
             z -= 1
