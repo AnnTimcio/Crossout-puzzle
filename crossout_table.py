@@ -79,6 +79,7 @@ class CrossoutTable:
                 if self.t[y + z][x] != ' ' and self.t[y + z][x] != c:
                     return False
             z -= 1
+        return True
 
     def add_ne(self, x, y, word):
         z = 0
@@ -98,6 +99,7 @@ class CrossoutTable:
                     return False
             a -= 1
             z += 1
+        return True
 
     def add_se(self, x, y, word):
         z = 0
@@ -117,6 +119,7 @@ class CrossoutTable:
                     return False
             z += 1
             a += 1
+        return True
 
     def add_s(self, x, y, word):
         z = 0
@@ -152,6 +155,7 @@ class CrossoutTable:
                     return False
             z -= 1
             a += 1
+        return True
 
     def add_w(self, x, y, word):
         z = 0
@@ -167,6 +171,7 @@ class CrossoutTable:
                 if self.t[y][x + z] != ' ' and self.t[y][x + z] != c:
                     return False
             z -= 1
+        return True
 
     def add_nw(self, x, y, word):
         z = 0
@@ -186,6 +191,7 @@ class CrossoutTable:
                     return False
             z -= 1
             a -= 1
+        return True
 
     def to_string(self):
         table = '**'
@@ -214,10 +220,11 @@ class CrossoutTable:
                         r[x] = random.choice(string.ascii_letters.lower())
 
     def count_letters(self):
-        l = 0
-        for c in self.t:
-            if c != ' ':
-                l += 1
-        return l
+        letters = 0
+        for r in self.t:
+            for c in r:
+                if c != ' ':
+                    letters += 1
+        return letters
 
 

@@ -21,14 +21,24 @@ class Engine:
 
     def __init__(self):
         self.table = CrossoutTable()
+        self.TRIES = 20
+
+    def _try_add(self, word):
+        pos_dir = ['n','w','e','s','nw','ne','se','sw']
+        x = random.randint(0, self.table.W)
+        y = random.randint(0, self.table.H)
+        dire = random.choice(pos_dir)
+        i = self._can_add(x, y, word, dire)
+        if i:
+            self.table.add(x, y, word, dire)
+        return i
 
     def add(self, word):
-        pos_dir = ['n','w','e','s','nw','ne','se','sw']
-        x = random.randint(0, self.W)
-        y = random.randint(0, self.H)
-        dir = random.choice(pos_dir)
-        i = self._can_add(x, y, dir)
-        return i
+        for t in range(self.TRIES):
+            if self._try_add(word):
+                return True
+        return False
+
 
     def _can_add(self, x, y, word, direction):
         if direction == 'nw' or direction == 'w' or direction == 'sw':
@@ -76,7 +86,7 @@ class Engine:
 
     def count_letters(self):
         l = 0
-        for c in self.t:
+        for c in self.table.t:
             if c != ' ':
                 l += 1
         return l

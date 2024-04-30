@@ -70,4 +70,5 @@ class TestEngine(TestCase):
     def test_add_correct(self):
         eng = Engine()
         eng.add('keel')
+        print(eng.table.to_string())
         self.assertEqual(4, eng.table.count_letters())
