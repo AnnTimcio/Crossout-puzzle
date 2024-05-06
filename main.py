@@ -25,6 +25,7 @@ if __name__ == "__main__":
     for w in words:
         if eng.add(w):
             win.append(w)
+    eng.table.fill_with_random()
     print(eng.table.to_string())
     print(win)
     print(len(win))
